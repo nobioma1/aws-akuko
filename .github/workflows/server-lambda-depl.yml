@@ -5,31 +5,31 @@ on:
     branches:
       - master
     paths:
-      - 'server/**'
+      - "server/**"
 jobs:
   deploy_source:
-      name: build and deploy server-lambda
-      strategy:
-        matrix:
-          node-version: [12.x]
-      runs-on: ubuntu-latest
-      steps:
-        - uses: actions/checkout@v1
-        - name: Use Node.js ${{ matrix.node-version }}
-          uses: actions/setup-node@v1.4.2
-          with:
-            node-version: ${{ matrix.node-version }}
-        - name: npm install and npm build
-          run: cd server && npm install && npm run build
-        - name: zip server dist folder
-          uses: montudor/action-zip@v0.1.0
-          with:
-            args: zip -qq -r ./server/bundle.zip ./server/dist
-        - name: deploy zip to aws lambda
-          uses: appleboy/lambda-action@master
-          with:
-            aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-            aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-            aws_region: ${{ secrets.AWS_REGION }}
-            function_name: aws-chat-randy
-            zip_file: server/bundle.zip
+    name: build and deploy server-lambda
+    strategy:
+      matrix:
+        node-version: [12.x]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1.4.2
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: npm install and npm build
+        run: cd server && npm install && npm run build
+      - name: zip server dist folder
+        uses: montudor/action-zip@v0.1.0
+        with:
+          args: zip -qq -r -j ./server-bundle.zip ./server/dist/*
+      - name: deploy zip to aws lambda
+        uses: appleboy/lambda-action@master
+        with:
+          aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws_region: ${{ secrets.AWS_REGION }}
+          function_name: aws-chat-randy
+          zip_file: server-bundle.zip
