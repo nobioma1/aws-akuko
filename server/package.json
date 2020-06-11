@@ -4,13 +4,12 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "ts-node-dev --poll ./src/index.ts"
+    "build": "tsc"
   },
   "keywords": [],
   "author": "Noble Obioma",
   "license": "MIT",
   "dependencies": {
-    "ts-node-dev": "^1.0.0-pre.44",
     "typescript": "^3.9.5"
   }
 }
