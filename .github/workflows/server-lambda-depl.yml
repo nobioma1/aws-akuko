@@ -19,12 +19,8 @@ jobs:
         uses: actions/setup-node@v1.4.2
         with:
           node-version: ${{ matrix.node-version }}
-      - name: npm install and npm build
-        run: cd server && npm install && npm run build
-      - name: zip server dist folder
-        uses: montudor/action-zip@v0.1.0
-        with:
-          args: zip -qq -r -j ./server-bundle.zip ./server/dist/*
+      - name: Install dependencies, Build application and Zip dist folder contents
+        run: cd server && npm install && npm run build && zip -qq -r -j ./server-bundle.zip ./dist/*
       - name: deploy zip to aws lambda
         uses: appleboy/lambda-action@master
         with:
