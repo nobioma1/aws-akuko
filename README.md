@@ -5,7 +5,7 @@ Anonymous Posts with Moderator
 #### Technologies
 
 - React
-- AWS S3
+- Amazon S3
 - AWS Lambda
 - Amazon DynamoDB
 - Amazon Comprehend
