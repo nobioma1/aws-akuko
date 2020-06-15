@@ -5,7 +5,7 @@ on:
     branches:
       - master
     paths:
-      - 'client/**'
+      - "client/**"
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -20,4 +20,4 @@ jobs:
       - name: Build React App
         run: cd client && npm install && npm run build
       - name: Deploy app build to S3 bucket
-        run: aws s3 sync ./client/dist/ s3://${{ secrets.AWS_S3_URL }} --delete
+        run: aws s3 sync ./client/dist/ s3://akuko --delete

@@ -1,0 +1,24 @@
+name: create-post-akuko-lambda-depl
+
+on:
+  push:
+    branches:
+      - master
+    paths:
+      - "lambdas/create-post-akuko/**"
+jobs:
+  deploy_source:
+    name: build and deploy create-post-akuko-lambda
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - name: Zip folder contents
+        run: cd lambdas && zip -qq -r -j ./create-post-akuko-bundle.zip ./create-post-akuko/*
+      - name: deploy zip to aws lambda
+        uses: appleboy/lambda-action@master
+        with:
+          aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws_region: ${{ secrets.AWS_REGION }}
+          function_name: create-post-akuko
+          zip_file: lambdas/create-post-akuko-bundle.zip
