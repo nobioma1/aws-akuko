@@ -54,7 +54,7 @@ export const CreatePost = ({ onClose, getPosts, initialRef }) => {
       <ModalHeader>
         Say Something
         <Text fontSize={14} color="gray.400">
-          Yours posts are moderated before made visible
+          Your post will be live if sentiment is not NEGETIVE
         </Text>
         <ModalCloseButton />
       </ModalHeader>
