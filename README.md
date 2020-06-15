@@ -1,11 +1,16 @@
-# aws-chat-randy
-Random participant chat web application
+# aws-akuko
+
+Anonymous Posts with Moderator
 
 #### Technologies
-- React
-- AWS Lambda
-- AWS S3
-- Amazon DynamoDB
 
-#### Continous Deployment to AWS
+- React
+- AWS S3
+- AWS Lambda
+- Amazon DynamoDB
+- Amazon Comprehend
+- API Gateway
+
+#### Continuous Deployment to AWS
+
 - Github Actions
