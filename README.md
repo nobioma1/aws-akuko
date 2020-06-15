@@ -2,6 +2,8 @@
 
 Anonymous Posts with Moderator
 
+![Architecture](https://res.cloudinary.com/elbon/image/upload/v1592191150/Screenshot_2020-06-15_at_04.15.03.png)
+
 #### Technologies
 
 - React
